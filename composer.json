@@ -1,0 +1,8 @@
+
+{
+  "name": "codingo-me/dropzoner",
+  "description": "Simpe Laravel package for image uploads using DropzoneJS library",
+  "require": {
+    "intervention/image": "^2.3"
+  }
+}
