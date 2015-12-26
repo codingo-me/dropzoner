@@ -1,9 +1,11 @@
 # Dropzoner - Laravel package for image upload using DropzoneJS 
 
+[![Software License][ico-license]](LICENSE.md)
+
 This is the simplest Laravel package for image uploads using DropzoneJS. 
 
-You pull it via composer, set service provider and include it in your views with **@include('dropzoner')** and set JS and CSS files in header and footer. 
-It will take full width of parent container, and will throw events on image upload and image delete actions. 
+You pull it via composer, set service provider and include it in your views with **@include('dropzoner')**. After this you need to set JS and CSS files in header and footer. 
+Dropzone will take full width of parent container, and will throw events on image upload and image delete actions. 
 Using event listeners you can hook this package with the rest of your application.
 
 Package uses Image Intervention library for saving images. It has its own filename sanitizer and method for creating unique filenames inside upload directory.
@@ -12,17 +14,17 @@ Package uses Image Intervention library for saving images. It has its own filena
 
 Require package in your Laravel project with:
 
-
-Or add it into composer.json:
-
-
-..and run 
-
 ```shell
-composer update
+composer require codingo-me/dropzoner
+```
+
+Now modify app.php config file and add Dropzoner Service Provider.
+
+```php
+        Codingo\Dropzoner\DropzonerServiceProvider::class
 ```
  
-After installation you need to publish Dropzoners config and assets:
+After setting service provider you need to publish Dropzoners configuration file and assets:
 
 ```shell
 php artisan vendor:publish
@@ -30,7 +32,7 @@ php artisan vendor:publish
 
 When you publish these files, you will be able to modify Dropzoner configuration. There you'll find validator array and validator-messages array.
 
-You also need to add upload path into .env file using key **DROPZONER_UPLOAD_PATH**. This directory should be write-able by web server.
+You also need to add upload path into .env file using key **DROPZONER_UPLOAD_PATH**. This directory should be write-able by web server, and it needs to end with trailing slash.
 
 ### Namespace
 
@@ -104,4 +106,9 @@ class ImageUploadListener
 }
 ```
 
-If you have some ideas for features, just open issues here on GitHub or send me an email.
+## License
+
+MIT License (MIT). See [License File](https://github.com/codingo-me/dropzoner/blob/master/LICENSE) for more information.
+
+
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square

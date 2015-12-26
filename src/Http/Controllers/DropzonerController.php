@@ -2,6 +2,7 @@
 
 namespace Codingo\Dropzoner\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Codingo\Dropzoner\Repositories\UploadRepository;
 
@@ -24,16 +25,16 @@ class DropzonerController extends Controller
      *
      * @return mixed
      */
-    public function postUpload()
+    public function postUpload(Request $request)
     {
-        $input = \Input::all();
+        $input = $request->all();
         $response = $this->uploadRepository->upload($input);
         return $response;
     }
 
-    public function postDelete()
+    public function postDelete(Request $request)
     {
-        $response = $this->uploadRepository->delete(\Input::get('id'));
+        $response = $this->uploadRepository->delete($request->input('id'));
         return $response;
     }
 

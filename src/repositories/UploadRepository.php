@@ -20,7 +20,7 @@ class UploadRepository
 
         if ($validator->fails()) {
 
-            return \Response::json([
+            return response()->json([
                 'error' => true,
                 'message' => $validator->messages()->first(),
                 'code' => 400
@@ -43,7 +43,7 @@ class UploadRepository
 
         if( !$image ) {
 
-            return \Response::json([
+            return response()->json([
                 'error' => true,
                 'message' => 'Server error while uploading',
                 'code' => 500
@@ -54,7 +54,7 @@ class UploadRepository
         //Fire ImageWasUploaded Event
         event(new ImageWasUploaded($original_name, $filename_with_extension));
 
-        return \Response::json([
+        return response()->json([
             'error' => false,
             'code'  => 200,
             'filename' => $filename_with_extension
@@ -64,13 +64,13 @@ class UploadRepository
     /**
      * Delete Single Image
      *
+     * @param $server_filename
      * @return mixed
      */
-    public function delete()
+    public function delete($server_filename)
     {
         $upload_path = config('dropzoner.upload-path');
 
-        $server_filename = \Input::get('id');
         $full_path = $upload_path . $server_filename;
 
         if (\File::exists($full_path)) {
@@ -79,7 +79,7 @@ class UploadRepository
 
         event(new ImageWasDeleted($server_filename));
 
-        return \Response::json([
+        return response()->json([
             'error' => false,
             'code'  => 200
         ], 200);
