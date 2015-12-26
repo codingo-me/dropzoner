@@ -1,6 +1,6 @@
 # Dropzoner - Laravel package for image upload using DropzoneJS 
 
-[![Software License][ico-license]](LICENSE.md)
+[![Software License][ico-license]](https://github.com/codingo-me/dropzoner/blob/master/LICENSE)
 
 This is the simplest Laravel package for image uploads using DropzoneJS. 
 
