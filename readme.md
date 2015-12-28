@@ -4,7 +4,7 @@
 
 This is the simplest Laravel package for image uploads using DropzoneJS. 
 
-You pull it via composer, set service provider and include it in your views with **@include('dropzoner')**. After this you need to set JS and CSS files in header and footer. 
+You pull it via composer, set service provider and include it in your views with **@include('dropzoner::dropzone')**. After this you need to set JS and CSS files in header and footer. 
 Dropzone will take full width of parent container, and will throw events on image upload and image delete actions. 
 Using event listeners you can hook this package with the rest of your application.
 
